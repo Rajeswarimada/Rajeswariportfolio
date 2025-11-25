@@ -11,7 +11,7 @@ RUN rm -rf ./*
 COPY index.html .
 COPY style.css .
 
-# Expose port 80 for HTTP traffic
-EXPOSE 80
+# Expose port 8080 for HTTP traffic
+EXPOSE 8080
 
 # Nginx will automatically serve index.html
