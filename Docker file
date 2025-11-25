@@ -1,16 +1,17 @@
-# Use an official lightweight web server image
+# Use Nginx as the base image
 FROM nginx:alpine
 
-# Set maintainer info
-LABEL maintainer="Rajeswari Mada <rajeswari@example.com>"
+# Set working directory to Nginx HTML folder
+WORKDIR /usr/share/nginx/html
 
-# Create portfolio HTML
-RUN mkdir -p /usr/share/nginx/html
+# Remove default Nginx index page
+RUN rm -rf ./*
 
-# Add custom portfolio page
-COPY index.html /usr/share/nginx/html/index.html
+# Copy custom profile page files into container
+COPY index.html .
+COPY style.css .
 
-# Expose port 80
+# Expose port 80 for HTTP traffic
 EXPOSE 80
 
-# Start Nginx
+# Nginx will automatically serve index.html
